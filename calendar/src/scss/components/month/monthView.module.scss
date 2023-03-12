@@ -1,0 +1,24 @@
+@use "scss/base/mixin";
+
+.wrapper {
+  button {
+    @include mixin.buttonReset;
+  }
+  display: grid;
+  grid-template-rows: auto repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  width: 400px;
+  height: 400px;
+  border: 1px solid #cccccc;
+}
+
+.emptyDay {
+  color: rgb(204, 204, 204);
+}
+
+.whatDay {
+  padding: 0.5rem;
+  text-align: center;
+  background-color: #ffffff;
+}

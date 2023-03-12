@@ -1,0 +1,15 @@
+// Global styles
+@import "scss/base/reset";
+@import "scss/base/fonts";
+
+html,
+body {
+  height: 100%;
+}
+
+body,
+button,
+input,
+textarea {
+  font-family: "Spoqa Han Sans Neo", sans-serif;
+}
