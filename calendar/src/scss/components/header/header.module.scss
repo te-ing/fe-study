@@ -1,0 +1,18 @@
+@use "scss/base/mixin";
+@use "scss/base/colors";
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    @include mixin.buttonReset;
+    min-width: 28px;
+    min-height: 28px;
+  }
+}
+
+.reverse {
+  transform: scaleX(-1);
+}

@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { MouseEventHandler } from "react";
 import styles from "scss/components/month/monthView.module.scss";
 import { numberToArray } from "utils";
 
@@ -13,6 +14,11 @@ export default function MonthView({ date }: TProps) {
   const month = numberToArray(dayjs(date).daysInMonth());
   const lastMonth = numberToArray(dayjs(date).subtract(1, "M").daysInMonth());
   const nextMonth = numberToArray(6 - endOfDay);
+
+  const handleClickDay: MouseEventHandler<HTMLButtonElement> = (target) => {
+    const day = target.currentTarget.innerText;
+    console.log(`${dayjs(date).format("YYYY-MM")}-${day.length < 2 ? `0${day}` : day}`);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -29,7 +35,7 @@ export default function MonthView({ date }: TProps) {
           ))
         : ""}
       {month.map((day) => (
-        <button type="button" key={`curr-${day}`}>
+        <button type="button" key={`curr-${day}`} onClick={handleClickDay}>
           {day}
         </button>
       ))}

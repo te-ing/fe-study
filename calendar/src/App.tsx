@@ -1,32 +1,29 @@
+import Header from "components/header/Header";
 import MonthView from "components/month/MonthView";
+import styles from "scss/app.module.scss";
 import dayjs from "dayjs";
 import { useState } from "react";
 import "scss/index.scss";
 
 function App() {
-  const [count, setCount] = useState<number>(0);
-  const currMonth = dayjs().subtract(-count, "M");
-  const monthIncrement = () => {
-    setCount(count + 1);
-  };
-
-  const monthDecrement = () => {
-    setCount(count - 1);
-  };
+  const [month, setMonth] = useState<number>(0);
+  const currMonth = dayjs().subtract(-month, "M");
+  const increment = (level: "year" | "month") => (level === "month" ? setMonth(month - 1) : setMonth(month - 12));
+  const decrement = (level: "year" | "month") => (level === "month" ? setMonth(month + 1) : setMonth(month + 12));
+  const reset = () => setMonth(0);
 
   return (
     <>
-      <p>month selector</p>
-      <div style={{ display: "flex" }}>
-        <button type="button" onClick={monthDecrement}>
-          -
-        </button>
-        <p style={{ fontSize: "24px" }}>{currMonth.format("YYYY년 MM월 DD일")}</p>
-        <button type="button" onClick={monthIncrement}>
-          +
-        </button>
+      <div className={styles.wrapper}>
+        <Header
+          date={currMonth}
+          increase={(level) => increment(level)}
+          decrease={(level) => decrement(level)}
+          reset={reset}
+        />
+        <MonthView date={currMonth} />
       </div>
-      <MonthView date={currMonth} />
+      <input type="date" />
     </>
   );
 }
