@@ -1,6 +1,5 @@
-import MonthView from "components/month/MonthView";
 import dayjs from "dayjs";
-import styles from "scss/components/header/header.module.scss";
+import styles from "scss/components/month/monthHeader.module.scss";
 import { DoubleArrow, SingleArrow } from "scss/svg";
 
 type TProps = {
@@ -10,7 +9,7 @@ type TProps = {
   reset: () => void;
 };
 
-function Header({ date, increase, decrease, reset }: TProps) {
+function MonthHeader({ date, increase, decrease, reset }: TProps) {
   return (
     <div className={styles.wrapper}>
       <button type="button" onClick={() => increase("year")} className={styles.reverse}>
@@ -32,4 +31,4 @@ function Header({ date, increase, decrease, reset }: TProps) {
   );
 }
 
-export default Header;
+export default MonthHeader;
