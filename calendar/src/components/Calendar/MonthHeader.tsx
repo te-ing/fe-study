@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import styles from "scss/components/month/monthHeader.module.scss";
+import styles from "scss/components/calendar/monthHeader.module.scss";
 import { DoubleArrow, SingleArrow } from "scss/svg";
 
 type TProps = {
