@@ -19,7 +19,7 @@ function Calendar() {
         decrease={(level) => decrement(level)}
         reset={reset}
       />
-      <MonthView date={currMonth} />
+      <MonthView date={currMonth} increase={(level) => increment(level)} decrease={(level) => decrement(level)} />
     </div>
   );
 }
