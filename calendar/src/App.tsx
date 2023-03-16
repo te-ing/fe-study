@@ -1,10 +1,10 @@
-import Calendar from "components/Calendar";
+import Month from "components/month";
 import "scss/index.scss";
 
 function App() {
   return (
     <>
-      <Calendar />
+      <Month />
       <input type="date" />
     </>
   );

@@ -1,10 +1,10 @@
-import styles from "scss/components/calendar/calendar.module.scss";
+import styles from "scss/components/month/month.module.scss";
 import dayjs from "dayjs";
 import { useState } from "react";
 import MonthView from "./MonthView";
 import MonthHeader from "./MonthHeader";
 
-function Calendar() {
+function Month() {
   const [month, setMonth] = useState<number>(0);
   const currMonth = dayjs().subtract(-month, "M");
   const increment = (level: "year" | "month") => (level === "month" ? setMonth(month - 1) : setMonth(month - 12));
@@ -24,4 +24,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default Month;

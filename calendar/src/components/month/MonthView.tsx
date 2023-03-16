@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { MouseEventHandler } from "react";
-import styles from "scss/components/calendar/monthView.module.scss";
+import styles from "scss/components/month/monthView.module.scss";
 import { numberToArray } from "utils";
 
 type TProps = {
