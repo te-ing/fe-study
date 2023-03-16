@@ -5,12 +5,13 @@ import { numberToArray } from "utils";
 
 type TProps = {
   date: dayjs.ConfigType;
+  clickDay: (day: string) => void;
   increase: (level: "month" | "year") => void;
   decrease: (level: "month" | "year") => void;
 };
 const whatDay = ["일", "월", "화", "수", "목", "금", "토"];
 
-export default function MonthView({ date, increase, decrease }: TProps) {
+export default function MonthView({ date, clickDay, increase, decrease }: TProps) {
   const startOfDay = dayjs(date).startOf("month").day(); // Sunday: 0 Saturday: 6
   const endOfDay = dayjs(date).endOf("month").day(); // Sunday: 0 Saturday: 6
   const month = numberToArray(dayjs(date).daysInMonth());
@@ -19,7 +20,7 @@ export default function MonthView({ date, increase, decrease }: TProps) {
 
   const handleClickDay: MouseEventHandler<HTMLButtonElement> = (target) => {
     const day = target.currentTarget.innerText;
-    console.log(`${dayjs(date).format("YYYY-MM")}-${day.length < 2 ? `0${day}` : day}`);
+    clickDay(`${dayjs(date).format("YYYY-MM")}-${day.length < 2 ? `0${day}` : day}`);
   };
 
   const handleClickEmptyDay: MouseEventHandler<HTMLButtonElement> = (target) => {

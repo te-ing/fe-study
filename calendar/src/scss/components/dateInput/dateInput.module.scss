@@ -1,0 +1,25 @@
+@use "scss/base/mixin";
+@use "scss/base/colors";
+
+.wrapper {
+  position: relative;
+  width: fit-content;
+}
+
+.month {
+  position: absolute;
+  top: 110%;
+  left: 3%;
+}
+
+.button {
+  width: 200px;
+  height: 36px;
+  background: none;
+  border: 1px solid colors.$GRAY300;
+  border-radius: 12px;
+}
+
+.hidden {
+  display: none;
+}

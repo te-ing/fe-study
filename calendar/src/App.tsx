@@ -1,13 +1,9 @@
-import Month from "components/month";
+import DateInput from "components/dateInput";
 import "scss/index.scss";
 
 function App() {
-  return (
-    <>
-      <Month />
-      <input type="date" />
-    </>
-  );
+  // eslint-disable-next-line no-console
+  return <DateInput clickDay={(day) => console.log(day)} />;
 }
 
 export default App;

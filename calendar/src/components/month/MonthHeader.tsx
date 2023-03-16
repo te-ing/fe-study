@@ -19,7 +19,7 @@ function MonthHeader({ date, increase, decrease, reset }: TProps) {
         <SingleArrow />
       </button>
       <button type="button" onClick={reset}>
-        {dayjs(date).format("YYYY년 MM월 DD일")}
+        {dayjs(date).format("YYYY년 MM월")}
       </button>
       <button type="button" onClick={() => decrease("month")}>
         <SingleArrow />
