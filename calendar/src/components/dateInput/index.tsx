@@ -1,8 +1,8 @@
 import cx from "classnames";
 import Month from "components/month";
-import dayjs from "dayjs";
 import { ComponentProps, MouseEventHandler, useState } from "react";
 import styles from "scss/components/dateInput/dateInput.module.scss";
+import { YMDFormat } from "utils/dayjs-helper";
 
 type TProps = ComponentProps<"button"> & {
   clickDay?: (day: string) => void;
@@ -19,7 +19,7 @@ export default function DateInput({ clickDay, placeholder = "연도. 월. 일", 
   };
 
   const handleClickDay = (day: string) => {
-    const formattedDate = dayjs(day).format("YYYY년 MM월 DD일");
+    const formattedDate = YMDFormat(day);
     clickDay && clickDay(formattedDate);
     setDate(formattedDate);
     setIsOpen(false);
