@@ -3,23 +3,25 @@ import styles from "scss/components/month/monthView.module.scss";
 import dayjs from "dayjs";
 import { currMonthArray, lastMonthArray, nextMonthArray, startOfDay } from "utils/dayjs-helper";
 import { WHAT_DAY } from "constants/day";
+import { useDateActions, useDateValue } from "context/date";
 
 type TProps = {
-  date: dayjs.ConfigType;
-  clickDay: (day: string) => void;
-  increase: (level: "month" | "year") => void;
-  decrease: (level: "month" | "year") => void;
+  toggle: () => void;
 };
 
-export default function MonthView({ date, clickDay, increase, decrease }: TProps) {
+export default function MonthView({ toggle }: TProps) {
+  const date = useDateValue();
+  const { up, down, set } = useDateActions();
+
   const handleClickDay: MouseEventHandler<HTMLButtonElement> = (target) => {
     const day = target.currentTarget.innerText;
-    clickDay(`${dayjs(date).format("YYYY-MM")}-${day.length < 2 ? `0${day}` : day}`);
+    set(dayjs(`${date?.format("YYYY-MM")}-${day.length < 2 ? `0${day}` : day}`));
+    toggle();
   };
 
   const handleClickEmptyDay: MouseEventHandler<HTMLButtonElement> = (target) => {
     const day = Number(target.currentTarget.innerText);
-    day < 15 ? decrease("month") : increase("month");
+    day < 15 ? down("month") : up("month");
   };
 
   return (

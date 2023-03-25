@@ -1,31 +1,28 @@
+import { useDateActions, useDateValue } from "context/date";
 import dayjs from "dayjs";
 import styles from "scss/components/month/monthHeader.module.scss";
 import { DoubleArrow, SingleArrow } from "scss/svg";
 import { YMFormat } from "utils/dayjs-helper";
 
-type TProps = {
-  date: dayjs.ConfigType;
-  increase: (level: "month" | "year") => void;
-  decrease: (level: "month" | "year") => void;
-  reset: () => void;
-};
+function MonthHeader() {
+  const date = useDateValue();
+  const { up, down, set } = useDateActions();
 
-function MonthHeader({ date, increase, decrease, reset }: TProps) {
   return (
     <div className={styles.wrapper}>
-      <button type="button" onClick={() => increase("year")} className={styles.reverse}>
+      <button type="button" onClick={() => up("year")} className={styles.reverse}>
         <DoubleArrow />
       </button>
-      <button type="button" onClick={() => increase("month")} className={styles.reverse}>
+      <button type="button" onClick={() => up("month")} className={styles.reverse}>
         <SingleArrow />
       </button>
-      <button type="button" onClick={reset}>
+      <button type="button" onClick={() => set(dayjs())}>
         {YMFormat(date)}
       </button>
-      <button type="button" onClick={() => decrease("month")}>
+      <button type="button" onClick={() => down("month")}>
         <SingleArrow />
       </button>
-      <button type="button" onClick={() => decrease("year")}>
+      <button type="button" onClick={() => down("year")}>
         <DoubleArrow />
       </button>
     </div>
