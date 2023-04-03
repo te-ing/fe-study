@@ -31,7 +31,7 @@ export default function MonthView({ toggle }: TProps) {
           {day}
         </div>
       ))}
-      {startOfDay
+      {startOfDay(date)
         ? lastMonthArray(date)
             .slice(-startOfDay(date))
             .map((day) => (
